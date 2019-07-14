@@ -6,6 +6,7 @@ extern keymap_config_t keymap_config;
 #define _LOWER 1
 #define _RAISE 2
 #define _FN3 3
+#define _DBGL 4
 #define _ADJUST 16
 
 enum custom_keycodes {
@@ -13,6 +14,7 @@ enum custom_keycodes {
   LOWER,
   RAISE,
   FN3,
+  DBGL,
   ADJUST,
 };
 
@@ -22,12 +24,14 @@ enum custom_keycodes {
 #define KC_CPYW LGUI(LSFT(LCTL(KC_3)))  // Copy whole screen
 #define KC_CAPP LGUI(LSFT(KC_4))        // Capture portion of screen
 #define KC_CPYP LGUI(LSFT(LCTL(KC_4)))  // Copy portion of screen
-#define KC_X0 MT(MOD_LCTL, KC_ESC)
+#define KC_X0 MT(MOD_RCTL, KC_ENT)
 #define KC_X1 LOWER
 #define KC_X2 RAISE
-#define KC_X3 LT(_FN3, KC_GRV)
 #define KC_X4 MT(MOD_RSFT, KC_ENT)
 #define KC_BL_S BL_STEP
+#define KC_FNL MO(_FN3)
+#define KC_DBG MO(_DBGL)
+#define KC_RSM LGUI(LALT(KC_R))
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -37,11 +41,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|----+----+----+----+----+----|    |----+----+----+----+----+----|
      TAB , Q  , W  , E  , R  , T  ,      Y  , U  , I  , O  , P  ,BSLS,
   //|----+----+----+----+----+----|    |----+----+----+----+----+----|
-     LCTL, A  , S  , D  , F  , G  ,      H  , J  , K  , L  ,SCLN, ENT,
+     LCTL, A  , S  , D  , F  , G  ,      H  , J  , K  , L  ,SCLN, X0 ,
   //|----+----+----+----+----+----|    |----+----+----+----+----+----|
      LSFT, Z  , X  , C  , V  , B  ,      N  , M  ,COMM,DOT ,SLSH,RSFT,
   //|----+----+----+----+----+----|    |----+----+----+----+----+----|
-     FN3 ,LCTL,LALT,LGUI, X1 ,SPC ,     SPC ,X2  ,RGUI,RALT,RCTL,RCTL
+     FNL , DBG,LALT,LGUI, X1 ,SPC ,     SPC , X2 ,RGUI,RALT,RCTL,RCTL
   //`----+----+----+----+----+----'    `----+----+----+----+----+----'
   ),
 
@@ -51,9 +55,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|----+----+----+----+----+----|    |----+----+----+----+----+----|
          ,    ,    ,    ,    ,    ,         ,    ,LPRN,RPRN,    ,    ,
   //|----+----+----+----+----+----|    |----+----+----+----+----+----|
-         ,    ,    ,    ,    ,    ,         ,    ,LCBR,RCBR,    ,    ,
+         ,CAPP,    ,    ,    ,    ,         ,    ,LCBR,RCBR,    ,    ,
   //|----+----+----+----+----+----|    |----+----+----+----+----+----|
-         ,    ,    ,    ,    ,    ,         ,    ,LBRC,RBRC,    ,    ,
+         ,CPYP,    ,    ,    ,    ,         ,    ,LBRC,RBRC,    ,    ,
   //|----+----+----+----+----+----|    |----+----+----+----+----+----|
          ,    ,    ,    ,    ,    ,         ,    ,MNXT,VOLD,VOLU,MPLY
   //`----+----+----+----+----+----'    `----+----+----+----+----+----'
@@ -80,6 +84,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
          ,    ,    ,    ,    ,    ,         ,    ,    ,    ,    ,    ,
   //|----+----+----+----+----+----|    |----+----+----+----+----+----|
          ,    ,    ,    ,    ,    ,     LEFT,DOWN, UP ,RGHT,    ,    ,
+  //|----+----+----+----+----+----|    |----+----+----+----+----+----|
+         ,    ,    ,    ,    ,    ,         ,    ,    ,    ,    ,    ,
+  //|----+----+----+----+----+----|    |----+----+----+----+----+----|
+         ,    ,    ,    ,    ,    ,         ,    ,    ,    ,    ,
+  //`----+----+----+----+----+----'    `----+----+----+----+----+----'
+  ),
+
+  [_DBGL] = LAYOUT_kc(
+  //,----+----+----+----+----+----.    ,----+----+----+----+----+----.
+      F1 , F2 , F3 , F4 , F5 , F6 ,      F7 , F8 , F9 , F10,F11 ,F12 ,
+  //|----+----+----+----+----+----|    |----+----+----+----+----+----|
+         ,    ,    ,    ,    ,    ,         , F8 , F10, F11,    ,    ,
+  //|----+----+----+----+----+----|    |----+----+----+----+----+----|
+         ,    ,    ,    ,    ,    ,         , RSM, F8 , F7 ,    ,    ,
   //|----+----+----+----+----+----|    |----+----+----+----+----+----|
          ,    ,    ,    ,    ,    ,         ,    ,    ,    ,    ,    ,
   //|----+----+----+----+----+----|    |----+----+----+----+----+----|
