@@ -17,8 +17,8 @@ RGBLIGHT_ANIMATIONS     = no        # LED animations
 LED_MIRRORED            = no        # Mirror LEDs across halves (enable DIP 1 on slave, and DIP 2 and 3 on master)
 
 RGB_MATRIX_ENABLE       = WS2812    # Enable per-key coordinate based RGB effects. Do not enable with RGBlight
-RGB_MATRIX_KEYPRESSES   = no        # Enable reactive per-key effects.
-RGB_MATRIX_FRAMEBUFFER_EFFECTS = no # Enable frame buffer effects like the typing heatmap.
+RGB_MATRIX_KEYPRESSES   = yes       # Enable reactive per-key effects.
+RGB_MATRIX_FRAMEBUFFER_EFFECTS = yes # Enable frame buffer effects like the typing heatmap.
 
 RGBLIGHT_FULL_POWER     = no        # Allow maximum RGB brightness for RGBLIGHT or RGB_MATRIX. Otherwise, limited to a safe level for a normal USB-A port
 FULLHAND_ENABLE         = no        # Enables the additional 24 Full Hand LEDs

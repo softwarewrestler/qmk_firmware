@@ -1,0 +1,12 @@
+// default left master
+make rgbkb/sol:default:dfu-split-left
+
+// plug in only right
+// make it master
+// flash, then un-master it
+make rgbkb/sol:default:dfu-split-right
+
+// I think this is for mapping changes
+// after both sides have been flashed
+make rgbkb/sol:default:dfu
+
